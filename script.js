@@ -68,8 +68,15 @@ let unitHandler = (unit, num) => {
 			ctorNames.push(names[ctorIdx])
 		}
 
+		if(counterScore == -1){
+			ctorNames.push("(" + names[ctorIdx] + ")")
+		}
+
 		ctorScores[ctorIdx] = counterScore // * num
 	}
+
+	ctorNames.sort()
+	ctorNames.reverse()
 
 	return {"report": fullName + " (" + unit + "): " + ctorNames.join(", ") + endl, "ctors": ctorScores}
 }
@@ -78,7 +85,7 @@ let output = document.getElementById('out')
 let input = document.getElementById('in')
 
 let inputHandler = () => {
-	result = endl + "Enemy units and answer:" + endl
+	result = endl + "<b>Enemy units and answer:</b>" + endl
 
 	let lines = input.value.split(/\r?\n/)
 	let scores = {}
@@ -101,9 +108,9 @@ let inputHandler = () => {
 	}
 
 	let sortedScores = sortScores(scores)
-	let topScores = limitScores(sortedScores, 3)
+	let topScores = limitScores(sortedScores, 5)
 	result += endl
-	result += "Combined answer: " + endl
+	result += "<b>Combined answer:</b>" + endl
 	result += scoresToString(topScores)
 
 	output.innerHTML = result
