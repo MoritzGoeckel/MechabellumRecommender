@@ -72,7 +72,7 @@ let unitHandler = (unit, num) => {
 			ctorNames.push("(" + names[ctorIdx] + ")")
 		}
 
-		ctorScores[ctorIdx] = counterScore // * num
+		ctorScores[ctorIdx] = counterScore * num
 	}
 
 	ctorNames.sort()
